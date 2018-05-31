@@ -1,0 +1,41 @@
+{
+    "name": "guardian360/repository",
+    "type": "library",
+    "description": "Repository pattern used to abstract the database layer.",
+    "homepage": "https://github.com/guardian360/repository",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Niek den Breeje",
+            "email": "n.denbreeje@guardian360.nl"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "illuminate/database": "^5.5",
+        "illuminate/console": "^5.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0"
+    },
+    "suggest": {
+        "jenssegers/mongodb": "Needed to support Moloquent models"
+    },
+    "autoload": {
+        "psr-4": {
+            "Guardian360\\Repository\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Guardian360\\Repository\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Guardian360\\Repository\\Providers\\RepositoryProvider"
+            ]
+        }
+    }
+}

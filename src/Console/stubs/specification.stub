@@ -1,0 +1,19 @@
+<?php
+
+namespace DummyNamespace;
+
+use Guardian360\Repository\Contracts\SpecificationContract as Specification;
+
+class DummyClass implements Specification
+{
+    /**
+     * Apply the specification.
+     *
+     * @param  mixed  $query
+     * @return mixed
+     */
+    public function apply($query)
+    {
+        return $query;
+    }
+}

@@ -1,0 +1,18 @@
+<?php
+
+namespace DummyNamespace;
+
+use Guardian360\Repository\AbstractRepository as Repository;
+
+class DummyClass extends Repository
+{
+    /**
+     * Specify the model's class name.
+     *
+     * @return string
+     */
+    public function model()
+    {
+        return Model::class;
+    }
+}
