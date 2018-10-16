@@ -4,7 +4,11 @@ php:
   - 7.0
 
 before_install:
+  - composer require satooshi/php-coveralls
   - composer install
 
 script:
-  - vendor/bin/phpunit
+  - vendor/bin/phpunit --coverage-clover ./tests/_reports
+
+after_script:
+  - php vendor/bin/coveralls -v
