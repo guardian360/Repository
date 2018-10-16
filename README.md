@@ -1,6 +1,8 @@
 Guardian360 Repository
 =====================
 
+[![Build Status](https://travis-ci.org/guardian360/Repository.svg?branch=master)](https://travis-ci.org/guardian360/Repository)
+
 A base repository for Eloquent models.
 
 Requirements
