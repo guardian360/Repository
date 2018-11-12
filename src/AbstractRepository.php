@@ -174,4 +174,14 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
 
         return $this;
     }
+
+    /**
+     * @return $this
+     */
+    public function flushSpecs()
+    {
+        $this->specifications = [];
+
+        return $this;
+    }
 }

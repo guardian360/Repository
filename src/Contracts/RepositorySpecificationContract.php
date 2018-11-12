@@ -13,4 +13,11 @@ interface RepositorySpecificationContract
      * @return $this
      */
     public function pushSpec(Specification $specification);
+
+    /**
+     * Flush specifications from the query.
+     *
+     * @return $this
+     */
+    public function flushSpecs();
 }

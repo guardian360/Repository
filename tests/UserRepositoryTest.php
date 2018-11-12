@@ -40,6 +40,19 @@ class UserRepositoryTest extends TestCase
         $users = $this->users->pushSpec(new UserIsAdmin)->all();
 
         $this->assertCount(2, $users);
+
+        return $this->users;
+    }
+
+    /**
+     * @test
+     * @depends itCanFetchAllUsersBySpecifications
+     */
+    public function itCanFlushSpecifications($repository)
+    {
+        $users = $this->users->flushSpecs()->all();
+
+        $this->assertCount(6, $users);
     }
 
     /** @test */
