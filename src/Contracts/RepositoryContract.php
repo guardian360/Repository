@@ -33,6 +33,13 @@ interface RepositoryContract
     public function findAllBy(string $attribute, $value, array $columns = ['*']);
 
     /**
+     * @param  int  $perPage
+     * @param  int  $page
+     * @return mixed
+     */
+    public function paginate(int $perPage = 10, int $page = 1);
+
+    /**
      * @param  array  $data
      * @return mixed
      */

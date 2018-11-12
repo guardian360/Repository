@@ -78,6 +78,16 @@ class UserRepositoryTest extends TestCase
     }
 
     /** @test */
+    public function itCanPaginateUsers()
+    {
+        $users = $this->users->paginate(5, 2);
+
+        $this->assertCount(1, $users->items());
+        $this->assertEquals(2, $users->currentPage());
+        $this->assertEquals(6, $users->total());
+    }
+
+    /** @test */
     public function itCanAddNewUsersToItsCollection()
     {
         $this->users->create([

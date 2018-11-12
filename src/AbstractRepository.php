@@ -2,6 +2,7 @@
 
 namespace Guardian360\Repository;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
 use Guardian360\Repository\Exceptions\RepositoryException;
@@ -114,6 +115,22 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
         }
 
         return $this->buildQuery()->where($attribute, $value)->get($columns);
+    }
+
+    /**
+     * @param  int  $perPage
+     * @param  int  $page
+     * @return \Illuminate\Pagination\Paginator
+     */
+    public function paginate(int $perPage = 10, int $page = 1)
+    {
+        Paginator::currentPageResolver(function () use ($perPage, $page) {
+            $start = ($page - 1) * $perPage;
+
+            return $start / $perPage + 1;
+        });
+
+        return $this->buildQuery()->paginate($perPage);
     }
 
     /**
