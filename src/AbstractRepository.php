@@ -62,6 +62,20 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function buildQuery()
+    {
+        $query = $this->model->newQuery();
+
+        foreach ($this->specifications as $specification) {
+            $query = $specification->apply($query);
+        }
+
+        return $query;
+    }
+
+    /**
      * @param  array  $relations
      * @return $this
      */
@@ -77,9 +91,7 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
      */
     public function all(array $columns = ['*'])
     {
-        $this->applySpecs();
-
-        return $this->model->get($columns);
+        return $this->buildQuery()->get($columns);
     }
 
     /**
@@ -88,9 +100,7 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
      */
     public function find($id)
     {
-        $this->applySpecs();
-
-        return $this->model->find($id);
+        return $this->buildQuery()->find($id);
     }
 
     /**
@@ -100,9 +110,7 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
      */
     public function findBy(string $attribute, $value, array $columns = ['*'])
     {
-        $this->applySpecs();
-
-        return $this->model->where($attribute, $value)->first($columns);
+        return $this->buildQuery()->where($attribute, $value)->first($columns);
     }
 
     /**
@@ -112,13 +120,11 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
      */
     public function findAllBy(string $attribute, $value, array $columns = ['*'])
     {
-        $this->applySpecs();
-
         if (is_array($value)) {
-            return $this->model->whereIn($attribute, $value)->get($columns);
+            return $this->buildQuery()->whereIn($attribute, $value)->get($columns);
         }
 
-        return $this->model->where($attribute, $value)->get($columns);
+        return $this->buildQuery()->where($attribute, $value)->get($columns);
     }
 
     /**
@@ -127,7 +133,7 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
      */
     public function create(array $data)
     {
-        return $this->model->create($data);
+        return $this->buildQuery()->create($data);
     }
 
     /**
@@ -142,9 +148,7 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
             return $model->update($data);
         }
 
-        $this->applySpecs();
-
-        return $this->model->where($attribute, $model)->update($data);
+        return $this->buildQuery()->where($attribute, $model)->update($data);
     }
 
     /**
@@ -156,8 +160,6 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
         if ($model instanceof Model) {
             return $model->delete();
         }
-
-        $this->applySpecs();
 
         return $this->model->destroy($model);
     }
