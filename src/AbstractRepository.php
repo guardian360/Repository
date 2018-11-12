@@ -174,16 +174,4 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
 
         return $this;
     }
-
-    /**
-     * @return $this
-     */
-    public function applySpecs()
-    {
-        foreach ($this->specifications as $specification) {
-            $this->model = $specification->apply($this->model);
-        }
-
-        return $this;
-    }
 }

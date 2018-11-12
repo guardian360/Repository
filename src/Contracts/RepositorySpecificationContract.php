@@ -13,11 +13,4 @@ interface RepositorySpecificationContract
      * @return $this
      */
     public function pushSpec(Specification $specification);
-
-    /**
-     * Applies specifications to the query.
-     *
-     * @return $this
-     */
-    public function applySpecs();
 }
