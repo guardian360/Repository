@@ -125,8 +125,8 @@ $this->users->findBy('name', 'Joe');
 
 Find all users by an attribute.
 ```php
-$this->users->findBy('role', 'admin');
-$this->users->findBy('role', ['admin', 'guest']);
+$this->users->findAllBy('role', 'admin');
+$this->users->findAllBy('role', ['admin', 'guest']);
 ```
 
 Create a new user.
