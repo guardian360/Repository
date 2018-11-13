@@ -2,7 +2,7 @@ Guardian360 Repository
 =====================
 
 [![Build Status](https://travis-ci.org/guardian360/Repository.svg?branch=master)](https://travis-ci.org/guardian360/Repository)
-[![Coverage Status](https://coveralls.io/repos/github/guardian360/Repository/badge.svg?branch=master)](https://coveralls.io/github/guardian360/Repository?branch=master)
+[![Coverage Status](https://img.shields.io/coveralls/github/guardian360/Repository/master.svg)](https://coveralls.io/github/guardian360/Repository?branch=master)
 
 A base repository for Eloquent models.
 
