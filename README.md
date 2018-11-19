@@ -88,7 +88,7 @@ class UserController extends Controller
     /**
      * @return void
      */
-    public function __construct(UserRepository $user)
+    public function __construct(UserRepository $users)
     {
         $this->users = $users;
     }
