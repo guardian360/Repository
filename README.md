@@ -10,7 +10,7 @@ Requirements
 ------------
 
 * PHP >=7.0.0
-* PHP MongDB driver (optional)
+* PHP MongoDB driver (optional)
 
 Installation
 ------------
