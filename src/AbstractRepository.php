@@ -18,7 +18,7 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
     protected $app;
 
     /**
-     * @var \Illuminate\Database\Eloquent\Model
+     * @var \Illuminate\Database\Eloquent\Model|mixed
      */
     protected $model;
 
@@ -47,7 +47,7 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
 
     /**
      * @throws \Guardian360\Repository\Exceptions\RepositoryException
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return \Illuminate\Database\Eloquent\Model|mixed
      */
     protected function makeModel()
     {
@@ -77,7 +77,7 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
     }
 
     /**
-     * @return []\Illuminate\Database\Eloquent\Model
+     * @return []\Illuminate\Database\Eloquent\Model|mixed
      */
     public function all(array $columns = ['*'])
     {
@@ -86,7 +86,7 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
 
     /**
      * @param  mixed  $id
-     * @return \Illuminate\Database\Eloquent\Model|null
+     * @return \Illuminate\Database\Eloquent\Model|mixed|null
      */
     public function find($id)
     {
@@ -96,7 +96,7 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
     /**
      * @param  string  $attribute
      * @param  mixed   $value
-     * @return \Illuminate\Database\Eloquent\Model|null
+     * @return \Illuminate\Database\Eloquent\Model|mixed|null
      */
     public function findBy(string $attribute, $value, array $columns = ['*'])
     {
@@ -106,7 +106,7 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
     /**
      * @param  string  $attribute
      * @param  mixed   $value
-     * @return []\Illuminate\Database\Eloquent\Model
+     * @return []\Illuminate\Database\Eloquent\Model|mixed
      */
     public function findAllBy(string $attribute, $value, array $columns = ['*'])
     {
@@ -135,7 +135,7 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
 
     /**
      * @param  array  $data
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return \Illuminate\Database\Eloquent\Model|mixed
      */
     public function create(array $data)
     {
