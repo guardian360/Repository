@@ -123,6 +123,22 @@ class UserRepositoryTest extends TestCase
     }
 
     /** @test */
+    public function itCanUpdateOrCreateUsers()
+    {
+        $data = [
+            'name' => 'Larry',
+            'role' => 'user',
+        ];
+
+        $this->assertCount(6, $this->users->all());
+
+        $this->users->updateOrCreate($data);
+        $this->users->updateOrCreate($data);
+
+        $this->assertCount(7, $this->users->all());
+    }
+
+    /** @test */
     public function itCanRemoveUsersFromItsCollection()
     {
         $this->users->delete(1);
