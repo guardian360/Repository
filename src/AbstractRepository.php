@@ -158,6 +158,15 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
     }
 
     /**
+     * @param  array  $data
+     * @return mixed
+     */
+    public function updateOrCreate(array $data)
+    {
+        return $this->buildQuery()->updateOrCreate($data);
+    }
+
+    /**
      * @param  mixed  $model
      * @return mixed
      */
