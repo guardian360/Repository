@@ -146,7 +146,7 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
      * @param  array   $data
      * @param  mixed   $model
      * @param  string  $attribute
-     * @return mixed
+     * @return bool
      */
     public function update(array $data, $model, string $attribute = 'id')
     {
@@ -154,7 +154,13 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
             return $model->update($data);
         }
 
-        return $this->buildQuery()->where($attribute, $model)->update($data);
+        $model = $this->buildQuery()->where($attribute, $model)->first();
+
+        if (!$model) {
+            return false;
+        }
+
+        return $model->update($data);
     }
 
     /**
