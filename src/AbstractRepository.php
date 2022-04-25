@@ -85,6 +85,14 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
     }
 
     /**
+     * @return \Illuminate\Support\LazyCollection
+     */
+    public function cursor(array $columns = ['*'])
+    {
+        return $this->buildQuery()->select($columns)->cursor();
+    }
+
+    /**
      * @param  mixed  $id
      * @return \Illuminate\Database\Eloquent\Model|mixed|null
      */
