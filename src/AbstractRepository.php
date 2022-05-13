@@ -25,6 +25,11 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
     /**
      * @var array
      */
+    protected $with = [];
+
+    /**
+     * @var array
+     */
     protected $specifications = [];
 
     /**
@@ -68,6 +73,10 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
     protected function buildQuery()
     {
         $query = $this->model->newQuery();
+
+        if (count($this->with) > 0) {
+            $query = $query->with($this->with);
+        }
 
         foreach ($this->specifications as $specification) {
             $query = $specification->apply($query);
@@ -191,6 +200,17 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
         }
 
         return $this->model->destroy($model);
+    }
+
+    /**
+     * @param  array  $with
+     * @return $this
+     */
+    public function with(array $with)
+    {
+        $this->with = $with;
+
+        return $this;
     }
 
     /**
