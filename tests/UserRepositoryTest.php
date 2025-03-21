@@ -18,7 +18,7 @@ class UserRepositoryTest extends TestCase
     /**
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -29,26 +29,24 @@ class UserRepositoryTest extends TestCase
     }
 
     /** @test */
-    public function itCanFetchAllUsers()
+    public function itCanFetchAllUsers(): void
     {
         $this->assertCount(6, $this->users->all());
     }
 
     /** @test */
-    public function itCanFetchAllUsersBySpecifications()
+    public function itCanFetchAllUsersBySpecifications(): void
     {
         $users = $this->users->pushSpec(new UserIsAdmin)->all();
 
         $this->assertCount(2, $users);
-
-        return $this->users;
     }
 
     /**
      * @test
      * @depends itCanFetchAllUsersBySpecifications
      */
-    public function itCanFlushSpecifications($repository)
+    public function itCanFlushSpecifications($repository): void
     {
         $users = $this->users->flushSpecs()->all();
 
@@ -56,13 +54,13 @@ class UserRepositoryTest extends TestCase
     }
 
     /** @test */
-    public function itCanFindAUserByPrimaryKey()
+    public function itCanFindAUserByPrimaryKey(): void
     {
         $this->assertInstanceOf(User::class, $this->users->find(1));
     }
 
     /** @test */
-    public function itCanFindAUserByAttribute()
+    public function itCanFindAUserByAttribute(): void
     {
         $this->assertInstanceOf(
             User::class,
@@ -71,14 +69,14 @@ class UserRepositoryTest extends TestCase
     }
 
     /** @test */
-    public function itCanFindAllUsersByAttribute()
+    public function itCanFindAllUsersByAttribute(): void
     {
         $this->assertCount(2, $this->users->findAllBy('role', 'admin'));
         $this->assertCount(6, $this->users->findAllBy('role', ['admin', 'user']));
     }
 
     /** @test */
-    public function itCanPaginateUsers()
+    public function itCanPaginateUsers(): void
     {
         $users = $this->users->paginate(5, 2);
 
@@ -88,7 +86,7 @@ class UserRepositoryTest extends TestCase
     }
 
     /** @test */
-    public function itCanAddNewUsersToItsCollection()
+    public function itCanAddNewUsersToItsCollection(): void
     {
         $this->users->create([
             'name' => 'James',
@@ -99,7 +97,7 @@ class UserRepositoryTest extends TestCase
     }
 
     /** @test */
-    public function itCanUpdateExistingUsersById()
+    public function itCanUpdateExistingUsersById(): void
     {
         $user = User::first();
 
@@ -111,7 +109,7 @@ class UserRepositoryTest extends TestCase
     }
 
     /** @test */
-    public function itCanUpdateExistingUsersByModel()
+    public function itCanUpdateExistingUsersByModel(): void
     {
         $user = User::first();
 
@@ -123,7 +121,7 @@ class UserRepositoryTest extends TestCase
     }
 
     /** @test */
-    public function itCanUpdateOrCreateUsers()
+    public function itCanUpdateOrCreateUsers(): void
     {
         $data = [
             'name' => 'Larry',
@@ -139,7 +137,7 @@ class UserRepositoryTest extends TestCase
     }
 
     /** @test */
-    public function itCanRemoveUsersFromItsCollection()
+    public function itCanRemoveUsersFromItsCollection(): void
     {
         $this->users->delete(1);
 

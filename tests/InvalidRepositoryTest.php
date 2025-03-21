@@ -3,16 +3,16 @@
 namespace Guardian360\Repository\Tests;
 
 use Illuminate\Container\Container as App;
+use Guardian360\Repository\Exceptions\RepositoryException;
 use Guardian360\Repository\AbstractRepository as Repository;
 
 class InvalidRepositoryTest extends TestCase
 {
-    /**
-     * @test
-     * @expectedException \Guardian360\Repository\Exceptions\RepositoryException
-     * */
+    /** @test */
     public function itThrowsAnErrorWhenAInvalidModelIsUsed()
     {
+        $this->expectException(RepositoryException::class);
+
         new ModelRepository(new App);
     }
 }
