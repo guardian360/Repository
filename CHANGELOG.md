@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/guardian360/Repository/compare/v2.0.0...v2.0.1) (2025-03-21)
+
+
+### Bug Fixes
+
+* remove phpunit 10 and 11 compatibility ([53ea632](https://github.com/guardian360/Repository/commit/53ea63282e22fadb7a9939127a75a699a909d7b9))
+
 ## [2.0.0](https://github.com/guardian360/Repository/compare/v1.4.0...v2.0.0) (2025-03-21)
 
 
