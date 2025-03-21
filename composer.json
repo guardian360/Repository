@@ -2,6 +2,7 @@
     "name": "guardian360/repository",
     "type": "library",
     "description": "Repository pattern used to abstract the database layer.",
+    "version": "1.4.0",
     "homepage": "https://github.com/guardian360/repository",
     "license": "MIT",
     "authors": [
