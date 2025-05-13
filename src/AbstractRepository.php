@@ -70,7 +70,7 @@ abstract class AbstractRepository implements Repository, RepositorySpecification
     /**
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function buildQuery()
+    protected function buildQuery()
     {
         $query = $this->model->newQuery();
 
