@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.2](https://github.com/guardian360/Repository/compare/v2.0.1...v2.0.2) (2025-05-13)
+
+
+### Bug Fixes
+
+* make buildQuery method public ([8556549](https://github.com/guardian360/Repository/commit/8556549a4fe2fd2095437864ba9d11d9299bdd42))
+* revert previous commit ([b89de0e](https://github.com/guardian360/Repository/commit/b89de0ea848b81b4c6b4c3fcbf182f76baa6840a))
+
 ## [2.0.1](https://github.com/guardian360/Repository/compare/v2.0.0...v2.0.1) (2025-03-21)
 
 
